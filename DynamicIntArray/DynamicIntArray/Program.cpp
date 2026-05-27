@@ -24,4 +24,11 @@ void test()
     DynamicIntArray c(a);
     
     std::cout << a[0] << " " << c[0] << "\n";
+    
+    DynamicIntArray d(3);
+    d[0] = 0; d[1] = 1; d[2] = 2;
+    
+    std::cout << a[0] << " " << d[0] << "\n";
+    
+    d = a;
 }

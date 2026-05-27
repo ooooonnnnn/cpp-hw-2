@@ -21,6 +21,14 @@ DynamicIntArray::~DynamicIntArray()
     delete[] content;
 }
 
+DynamicIntArray& DynamicIntArray::operator=(const DynamicIntArray& source)
+{
+    DynamicIntArray temp(source);
+    std::swap(content, temp.content);
+    std::swap(capacity, temp.capacity);
+    return *this;   
+}
+
 int& DynamicIntArray::operator[](size_t index)
 {
     return content[index];
