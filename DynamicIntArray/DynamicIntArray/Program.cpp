@@ -13,22 +13,27 @@ int main(int argc, char* argv[])
 
 void test()
 {
-    DynamicIntArray a(1);
+    DynamicIntArray* a = new DynamicIntArray(1);
     DynamicIntArray b(1);
     
-    a[0] = 1;
+    DynamicIntArray& aRef = (*a);
+    aRef[0] = 1;
     b[0] = 2;
     
-    std::cout << a[0] << " " << b[0] << "\n";
+    std::cout << aRef[0] << " " << b[0] << "\n";
     
-    DynamicIntArray c(a);
+    DynamicIntArray c(aRef);
     
-    std::cout << a[0] << " " << c[0] << "\n";
+    std::cout << aRef[0] << " " << c[0] << "\n";
     
     DynamicIntArray d(3);
     d[0] = 0; d[1] = 1; d[2] = 2;
     
-    std::cout << a[0] << " " << d[0] << "\n";
+    std::cout << aRef[0] << " " << d[0] << "\n";
     
-    d = a;
+    d = aRef;
+    
+    std::cout << aRef[0] << " " << d[0] << "\n";
+    
+    delete a;
 }

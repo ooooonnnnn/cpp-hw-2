@@ -14,4 +14,5 @@ public:
     DynamicIntArray& operator=(const DynamicIntArray& source);
     
     int& operator[](size_t index);
+    size_t size() const;
 };

@@ -33,3 +33,8 @@ int& DynamicIntArray::operator[](size_t index)
 {
     return content[index];
 }
+
+size_t DynamicIntArray::size() const
+{
+    return capacity;
+}
