@@ -9,7 +9,9 @@ void test_vector2d();
 
 int main(int argc, char* argv[])
 {
-    // test_fraction();
+    std::cout << "Test Fraction:\n\n";
+    test_fraction();
+    std::cout << "Test Vector2D:\n\n";
     test_vector2d();    
     
     return 0;
@@ -30,7 +32,12 @@ void test_vector2d()
     Vector2D d(0.2f, 0.2f);
     Vector2D e(0.3f, 0.3f);
     std::cout << "c: " << c << "\nd: " << d << "\ne: " << e << "\n";
-    std::cout << "c+d = " << (c+d) << "\nc+d == e: " << (c+d == e ? "true" : "false") << "\n";   
+    std::cout << "c+d = " << (c+d) << "\nc+d == e: " << (c+d == e ? "true" : "false") << "\n\n";
+    
+    std::cout << "dot(c,d) = " << dot(c,d) << "\n\n";
+    
+    std::cout << "c*2 = " << (c*2) << "\n"
+    << "2*c = " << (2*c) << "\n";
 }
 
 void test_fraction()
@@ -43,5 +50,5 @@ void test_fraction()
     std::cout << "\na+b = " << (a+b);
     std::cout << "\na-b = " << (a-b);
     std::cout << "\na*b = " << (a*b);
-    std::cout << "\na/b = " << (a/b);
+    std::cout << "\na/b = " << (a/b) << "\n\n";
 }
