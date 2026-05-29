@@ -3,7 +3,7 @@
 class DynamicIntArray
 {
     int* content;
-    int capacity;
+    size_t capacity;
     
 public:
     
@@ -13,6 +13,9 @@ public:
     
     DynamicIntArray& operator=(const DynamicIntArray& source);
     
-    int& operator[](size_t index);
+    // int& operator[](size_t index);
+    void set(size_t index, int value);
+    int operator[](size_t index) const;
     size_t size() const;
+    void resize(size_t newSize);
 };
