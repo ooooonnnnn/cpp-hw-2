@@ -49,6 +49,11 @@ Fraction Fraction::operator/(const Fraction& other) const
     return result;  
 }
 
+std::ostream& Fraction::operator<<(std::ostream& stream, const Fraction& frac) const
+{
+    stream << frac.numerator << "/" << frac.denominator;
+}
+
 void Fraction::expend_by(int const factor)
 {
     if (factor == 0) throw std::exception("Can't divide by 0");

@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include <iosfwd>
 
 class Fraction
 {
@@ -6,7 +7,6 @@ class Fraction
     int denominator;
 public:
     Fraction(int numerator, int denominator);
-    void print() const;
     static void expand_to_common_denominator(Fraction& first, Fraction& second);
     void reduce();
 
@@ -15,4 +15,6 @@ public:
     Fraction operator*(const Fraction& other) const;
     Fraction operator/(const Fraction& other) const;
     void expend_by(int factor);
+    
+    friend std::ostream& operator<<(std::ostream& stream, const Fraction& frac);
 };
