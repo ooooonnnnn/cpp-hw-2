@@ -10,11 +10,6 @@ Fraction::Fraction(int numerator, int denominator) : numerator(numerator)
     this->reduce();
 }
 
-void Fraction::print() const
-{
-    std::cout << numerator << "/" << denominator;
-}
-
 Fraction Fraction::operator+(const Fraction& other) const
 {
     Fraction tempThis = *this;
@@ -49,9 +44,10 @@ Fraction Fraction::operator/(const Fraction& other) const
     return result;  
 }
 
-std::ostream& Fraction::operator<<(std::ostream& stream, const Fraction& frac) const
+std::ostream& operator<<(std::ostream& stream, const Fraction& frac)
 {
     stream << frac.numerator << "/" << frac.denominator;
+    return stream;
 }
 
 void Fraction::expend_by(int const factor)
