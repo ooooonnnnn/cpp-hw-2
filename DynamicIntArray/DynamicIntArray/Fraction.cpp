@@ -35,6 +35,20 @@ Fraction Fraction::operator-(const Fraction& other) const
     return result;
 }
 
+Fraction Fraction::operator*(const Fraction& other) const
+{
+    Fraction result(numerator * other.numerator, denominator * other.denominator);
+    result.reduce();
+    return result;
+}
+
+Fraction Fraction::operator/(const Fraction& other) const
+{
+    Fraction result(numerator * other.denominator, denominator * other.numerator);
+    result.reduce();
+    return result;  
+}
+
 void Fraction::expend_by(int const factor)
 {
     if (factor == 0) throw std::exception("Can't divide by 0");
@@ -56,4 +70,9 @@ void Fraction::reduce()
     int gcd = std::_Gcd(numerator, denominator);
     numerator /= gcd;  
     denominator /= gcd;
+    if (denominator < 0)
+    {
+        numerator *= -1;
+        denominator *= -1;
+    }
 }

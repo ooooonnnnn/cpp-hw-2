@@ -12,5 +12,7 @@ public:
 
     Fraction operator+(const Fraction& other) const;
     Fraction operator-(const Fraction& other) const;
+    Fraction operator*(const Fraction& other) const;
+    Fraction operator/(const Fraction& other) const;
     void expend_by(int factor);
 };
