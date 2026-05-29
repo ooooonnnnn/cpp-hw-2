@@ -1,7 +1,7 @@
 ﻿#include "DynamicIntArray.h"
 #include <iostream>
 
-DynamicIntArray::DynamicIntArray(int capacity) 
+DynamicIntArray::DynamicIntArray(size_t capacity) 
     : content(new int[capacity]), capacity(capacity)
 {
 }
@@ -10,7 +10,7 @@ DynamicIntArray::DynamicIntArray(const DynamicIntArray& source)
     : capacity(source.capacity)
 {
     content = new int[capacity];
-    for (int i = 0; i < capacity; ++i)
+    for (size_t i = 0; i < capacity; ++i)
     {
         content[i] = source.content[i];
     }
@@ -32,7 +32,7 @@ DynamicIntArray& DynamicIntArray::operator=(const DynamicIntArray& source)
 void DynamicIntArray::set(size_t index, int value)
 {
     // std::cout << "Called non const (set)" << "\n";
-    if (index == capacity - 1) resize(capacity * 2);
+    if (index == capacity) resize(capacity * 2);
     content[index] = value;
 }
 

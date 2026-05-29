@@ -7,7 +7,7 @@ class DynamicIntArray
     
 public:
     
-    DynamicIntArray(int capacity);
+    DynamicIntArray(size_t capacity);
     DynamicIntArray(const DynamicIntArray& source);
     ~DynamicIntArray();
     

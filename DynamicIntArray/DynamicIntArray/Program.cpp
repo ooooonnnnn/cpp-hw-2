@@ -3,57 +3,77 @@
 
 #include "DynamicIntArray.h"
 
-void test();
-void testSize();
+void test_rule_of_3();
+void test_size();
 void print_values(DynamicIntArray& a);
 
 int main(int argc, char* argv[])
 {
-    testSize();
+    std::cout << "Rule of 3 test:\n";
+    test_rule_of_3();
+    std::cout << "\n\nCapacity change test:\n";
+    test_size();
     return 0;
 }
 
-void test()
+void test_rule_of_3()
 {
-    // DynamicIntArray* a = new DynamicIntArray(1);
-    // DynamicIntArray b(1);
-    //
-    // DynamicIntArray& aRef = (*a);
-    // aRef[0] = 1;
-    // b[0] = 2;
-    //
-    // std::cout << aRef[0] << " " << b[0] << "\n";
-    //
-    // DynamicIntArray c(aRef);
-    //
-    // std::cout << aRef[0] << " " << c[0] << "\n";
-    //
-    // DynamicIntArray d(3);
-    // d[0] = 0; d[1] = 1; d[2] = 2;
-    //
-    // std::cout << aRef[0] << " " << d[0] << "\n";
-    //
-    // d = aRef;
-    //
-    // std::cout << aRef[0] << " " << d[0] << "\n";
-    //
-    // delete a;
+    DynamicIntArray* aPtr = new DynamicIntArray(3);
+    DynamicIntArray& a = *aPtr;
+    a.set(0,0);
+    a.set(1,10);
+    a.set(2,20);
+    
+    std::cout << "Created a on the heap\n";
+    std::cout << "a: ";
+    print_values(a);
+    
+    DynamicIntArray b(a);
+    std::cout << "Constructed b on the stack from a\nb: ";
+    print_values(b);
+    
+    b.set(0,100);
+    b.set(3, 30);
+    std::cout << "Changed b\na: ";
+    print_values(a);
+    std::cout << "b: ";
+    print_values(b);
+    
+    a = b;
+    std::cout << "Assigned b to a\na: ";
+    print_values(a);
+    std::cout << "b: ";
+    print_values(b);
+    
+    delete aPtr;
+    std::cout << "Deleted a\nb: ";
+    print_values(b);
 }
 
-void testSize()
+void test_size()
 {
+    std::cout << "Created DynamicIntArray with capacity 2" << "\n";
     DynamicIntArray a(2);
+    print_values(a);
     a.set(0, 0);
+    std::cout << "Set first and second indices" << "\n";
     print_values(a);
     a.set(1, 1);
     print_values(a);
-    return;
-    // a[1] = 2;
-    
-    a.resize(2);
+    std::cout << "Set third index" << "\n";
+    a.set(2, 2);
     print_values(a);
     
-    // a[1] = 2;
+    std::cout << "Increase capacity to 10 and set values" << "\n";
+    a.resize(10);
+    for (size_t i = 0; i < a.size(); ++i)
+    {
+        a.set(i,static_cast<int>(i));
+    }
+    print_values(a);
+    
+    std::cout << "Decrease capacity to 5" << "\n";
+    a.resize(5);
     print_values(a);
 }
 
